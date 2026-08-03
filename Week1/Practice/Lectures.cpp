@@ -7,7 +7,6 @@
 int main(int argc, char* args[])
 {
 	Day2 day2;
-
 	int menuSelection = 0;
 	std::vector<std::string> menuOptions{
 		"1. Part A-1.0: Calling static methods",
