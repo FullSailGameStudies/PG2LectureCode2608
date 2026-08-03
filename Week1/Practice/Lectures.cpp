@@ -4,8 +4,21 @@
 #include <Console.h>
 #include <Input.h>
 
+int Add(int n1, int n2)//n1 and n2 are the parameters
+{
+	return n1 + n2;
+}
 int main(int argc, char* args[])
 {
+	//CAPTURE the return value
+	//1. create a variable with the same type as the return type
+	int sum;
+	//2. call the function and assign it to my variable
+	sum = Add(5, 2);
+
+	int num1 = 5, num2 = 2;
+	int result = Add(num1, num2);//num1 and num2 are the 'arguments'
+
 	Day2 day2;
 	int menuSelection = 0;
 	std::vector<std::string> menuOptions{
@@ -41,6 +54,11 @@ int main(int argc, char* args[])
 			//  Experiment with changing the colors.
 			//  Open the Console.h file (look in Misc/Console in Solution Explorer) to see how the methods are declared.
 			//
+			Console::Write("Hello PG2! ", ConsoleColor::Red);
+			Console::WriteLine("Day01: ", ConsoleColor::Green);
+			Console::WriteLine(" Intro", ConsoleColor::Yellow);
+			Console::WriteLine(" Static vs non-static", ConsoleColor::Yellow);
+
 			break;
 		}
 		case 2:
@@ -70,6 +88,8 @@ int main(int argc, char* args[])
 			//	Print the name that the user enters.
 			//	Open the Input.h file(look in Misc / Input in Solution Explorer) to see how the GetString is declared.
 			//
+			std::string name = Input::GetString("What is your name? ");
+			std::cout << "You entered " << name << ".\n";
 			break;
 		}
 		case 6:
@@ -84,6 +104,8 @@ int main(int argc, char* args[])
 			//	Print the age that the user enters.
 			//	Open the Input.h file(look in Misc / Input in Solution Explorer) to see how the GetInteger is declared.
 			//
+			int age = Input::GetInteger("What is your age?", 0, 120);
+			std::cout << "Your age is " << age << ". Weird!\n";
 			break;
 		}
 		case 7:
