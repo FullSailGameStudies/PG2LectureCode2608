@@ -20,6 +20,7 @@ private:
 	//
 	// Part B-2.1: Add a method declaration for RenderZombies
 	//
+	void RenderZombies(const std::vector<Zombie>& zeeks) const;
 
 	//
 	// Part B-3.1: Add a method declaration for EraseZombies

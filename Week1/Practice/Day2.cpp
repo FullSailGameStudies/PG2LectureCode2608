@@ -103,6 +103,7 @@ void Day2::PartB(int option)
 				//
 				// Part B-2.3 call RenderZombies
 				//
+				RenderZombies(mobs);
 
 
 				player.Render();
@@ -129,5 +130,13 @@ void Day2::SpawnZombies(PG2Graphics& engine, std::vector<Zombie>& zeeks, Player&
 		} while (x == px and y == py);
 		Zombie zeek(&engine, 0.5f, x, y);
 		zeeks.push_back(zeek);
+	}
+}
+
+void Day2::RenderZombies(const std::vector<Zombie>& zeeks) const
+{
+	for (const Zombie& zeek : zeeks)
+	{
+		zeek.Render();
 	}
 }

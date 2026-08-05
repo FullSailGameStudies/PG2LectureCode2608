@@ -16,9 +16,10 @@ int Add(int n1, int n2)//n1 and n2 are the parameters
 {
 	return n1 + n2;
 }
-void Printer(std::vector<int>& nummies)
+void Printer(const std::vector<int>& nummies)
 {
-	for (auto& nummy : nummies)
+	//range-based (foreach)
+	for (const int& nummy : nummies)
 	{
 		std::cout << nummy;
 	}
@@ -31,8 +32,11 @@ void Incrementer(int& number)//pass by reference (ALIAS)
 {
 	number++;
 }
+
+
 int main(int argc, char* args[])
 {
+	const float PI = 3.1415f;
 	//CAPTURE the return value
 	//1. create a variable with the same type as the return type
 	int sum;
