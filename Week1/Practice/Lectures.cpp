@@ -21,7 +21,7 @@ void Printer(const std::vector<int>& nummies)
 	//range-based (foreach)
 	for (const int& nummy : nummies)
 	{
-		std::cout << nummy;
+		std::cout << nummy << " ";
 	}
 }
 //WHEN to use pass by reference
@@ -51,6 +51,65 @@ int main(int argc, char* args[])
 	int result = Add(num1, num2);//num1 and num2 are the 'arguments'
 	Incrementer(num2);//int& number = num2
 	Incrementer(num1);//int& number = num1
+
+	std::vector<int> nums{ 1,2,2,3,3,3,4,4,5,8 };
+	//erase an item from the vector
+	int index = 8;
+	//iterator to the number '5' or the 8 index
+	std::vector<int>::iterator it = nums.begin() + index;
+	nums.erase(it);
+	std::cout << "\n\nBefore erasing:\n";
+	Printer(nums);
+	//erase all the '3's
+	for (int i = 0; i < nums.size(); i++)
+	{
+		if (nums[i] == 3)
+		{
+			it = nums.begin() + i;
+			nums.erase(it);
+			i--;//move the index back 1
+		}
+	}
+	//OR...
+	for (int i = 0; i < nums.size();)
+	{
+		if (nums[i] == 3)
+		{
+			it = nums.begin() + i;
+			nums.erase(it);
+		}
+		else
+			i++;
+	}
+	//OR...
+	for (int i = nums.size() - 1; i >= 0; i--)
+	{
+		if (nums[i] == 3)
+		{
+			it = nums.begin() + i;
+			nums.erase(it);
+		}
+	}
+	//OR...iterator loop
+	for (auto iter = nums.begin(); iter != nums.end() ;)
+	{
+		if (*iter == 3)
+		{
+			iter = nums.erase(iter);
+		}
+		else
+			iter++;
+	}
+
+	std::cout << "\n\nAfter erasing:\n";
+	Printer(nums);
+
+	//iterators
+	//	objects that 'point' to an item in the container
+	//  objects that know how to move through the container
+
+
+
 	Day2 day2;
 	int menuSelection = 0;
 	std::vector<std::string> menuOptions{
