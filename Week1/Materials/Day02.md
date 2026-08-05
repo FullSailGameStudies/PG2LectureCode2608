@@ -20,7 +20,7 @@
 		- HINT: use rand() % 10 where 10 is the size of the map
 	 - make sure the zombie position does NOT match the player's position.
 		- HINT: get the player's position using the GetXPosition and GetYPosition methods of the player.
-	 - Example of how to create a Zombie object: Zombie zomb(engine, 0.5f, x, y); 
+	 - Example of how to create a Zombie object: Zombie zomb(&engine, 0.5f, x, y); 
 		- NOTE: 0.5f is the scale
 
 ### 🧩 Part B-1.3: call the method

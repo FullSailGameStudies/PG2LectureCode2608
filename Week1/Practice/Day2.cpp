@@ -62,6 +62,7 @@ void Day2::PartB(int option)
 			//
 			// Part B-1.3 Call SpawnZombies
 			//
+			SpawnZombies(engine, mobs, player);
 
 			bool quit = false;
 			SDL_Event e;
@@ -112,4 +113,21 @@ void Day2::PartB(int option)
 		}
 	}
 	engine.Close();
+}
+
+void Day2::SpawnZombies(PG2Graphics& engine, std::vector<Zombie>& zeeks, Player& player)
+{
+	int px = player.GetXPosition();
+	int py = player.GetYPosition();
+
+	int x, y;
+	for (int i = 0; i < 5; i++)
+	{
+		do {
+			x = rand() % 10;
+			y = rand() % 10;
+		} while (x == px and y == py);
+		Zombie zeek(&engine, 0.5f, x, y);
+		zeeks.push_back(zeek);
+	}
 }

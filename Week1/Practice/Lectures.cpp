@@ -4,9 +4,32 @@
 #include <Console.h>
 #include <Input.h>
 
+/*
+game loop(true)
+{
+  update(objects)
+  render(objects)
+}
+
+*/
 int Add(int n1, int n2)//n1 and n2 are the parameters
 {
 	return n1 + n2;
+}
+void Printer(std::vector<int>& nummies)
+{
+	for (auto& nummy : nummies)
+	{
+		std::cout << nummy;
+	}
+}
+//WHEN to use pass by reference
+//1) to prevent a copy
+//	in general, if the type is a CLASS, pass by reference
+//2) need to modify the variable in the other scope
+void Incrementer(int& number)//pass by reference (ALIAS)
+{
+	number++;
 }
 int main(int argc, char* args[])
 {
@@ -17,8 +40,13 @@ int main(int argc, char* args[])
 	sum = Add(5, 2);
 
 	int num1 = 5, num2 = 2;
+	int& numRef = num1;
+	numRef += 2;
+	numRef = num2;//copies num2 to num1
+	std::cout << num1 << "\n";
 	int result = Add(num1, num2);//num1 and num2 are the 'arguments'
-
+	Incrementer(num2);//int& number = num2
+	Incrementer(num1);//int& number = num1
 	Day2 day2;
 	int menuSelection = 0;
 	std::vector<std::string> menuOptions{
