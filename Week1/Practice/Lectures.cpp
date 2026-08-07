@@ -12,9 +12,10 @@ game loop(true)
 }
 
 */
-int Add(int n1, int n2)//n1 and n2 are the parameters
+//default params must appear at the end of the param list
+int Add(int n1, int n2, int n3 = 0)//n1 and n2 are the parameters
 {
-	return n1 + n2;
+	return n1 + n2 + n3;
 }
 void Printer(const std::vector<int>& nummies)
 {
@@ -34,6 +35,13 @@ void Incrementer(int& number)//pass by reference (ALIAS)
 }
 
 
+void Info(const std::vector<int>& vec)
+{
+	//size() - # of items in the vector
+	//capacity() - how big the internal array is
+	std::cout << "size: " << vec.size() << " capacity: " << vec.capacity() << "\n";
+}
+
 int main(int argc, char* args[])
 {
 	const float PI = 3.1415f;
@@ -41,7 +49,8 @@ int main(int argc, char* args[])
 	//1. create a variable with the same type as the return type
 	int sum;
 	//2. call the function and assign it to my variable
-	sum = Add(5, 2);
+	sum = Add(2,5);
+	sum = Add(2,10);
 
 	int num1 = 5, num2 = 2;
 	int& numRef = num1;
@@ -52,7 +61,23 @@ int main(int argc, char* args[])
 	Incrementer(num2);//int& number = num2
 	Incrementer(num1);//int& number = num1
 
-	std::vector<int> nums{ 1,2,2,3,3,3,4,4,5,8 };
+	std::vector<int> nums;// { 1, 2, 2, 3, 3, 3, 4, 4, 5, 8 };
+	nums.reserve(10);
+	Info(nums);//size:  capacity:
+	for (int i = 0; i < 10; i++)
+	{
+		nums.push_back(i);
+		Info(nums);
+	}
+	std::vector<int> nums2 = nums;
+	std::vector<int> nums3(nums);
+	std::vector<int> nums4;
+	nums4.reserve(nums.size());
+	for (int i = 0; i < nums.size(); i++)
+	{
+		nums4.push_back(nums[i]);
+	}
+
 	//erase an item from the vector
 	int index = 8;
 	//iterator to the number '5' or the 8 index

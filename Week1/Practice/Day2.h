@@ -25,7 +25,7 @@ private:
 	//
 	// Part B-3.1: Add a method declaration for KillZombies
 	//
-	int KillZombies(std::vector<Zombie>& zeeks,const Player& player) const;
+	int KillZombies(std::vector<Zombie>& zeeks,const Player& player, int range = 4) const;
 
 };
 

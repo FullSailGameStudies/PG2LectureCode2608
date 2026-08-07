@@ -39,7 +39,7 @@ void Day2::RenderZombies(const std::vector<Zombie>& zeeks) const
 //
 // Part B-3.1: Add a method definition for EraseZombies
 //
-int Day2::KillZombies(std::vector<Zombie>& zeeks, const Player& player) const
+int Day2::KillZombies(std::vector<Zombie>& zeeks, const Player& player, int range) const
 {
 	int counter = 0;
 
@@ -55,7 +55,7 @@ int Day2::KillZombies(std::vector<Zombie>& zeeks, const Player& player) const
 
 		//calculate the distance
 		int distance = sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
-		if (distance < 4)
+		if (distance < range)
 		{
 			//erase the closer zombies
 			zeeks.erase(zeeks.begin() + i);
@@ -135,7 +135,7 @@ void Day2::PartB(int option)
 								//
 								// Part B-3.3 Call KillZombies
 								//
-								int numberOfKills = KillZombies(mobs, player);
+								int numberOfKills = KillZombies(mobs, player, 8);
 								std::cout << "Steve killed " << numberOfKills << " zombies!\n";
 							}
 						}
