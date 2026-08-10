@@ -5,10 +5,26 @@
 #include "Day6.h"
 #include <Input.h>
 
+//a recursive method is a method that calls itself!
+//all recursive methods require 2 things:
+//1) a recursive case (it must call itself)
+//2) an exit condition (a base case)
+void OtherMethod(int someNumber)
+{	
+	if (someNumber >= 1000) return;//an exit condition
+	
+	//do some work
+	std::cout << someNumber << "\n";
+	OtherMethod(someNumber + 1);//recursive case (when the method calls itself)
+	
+	Console::WriteLine(someNumber, (ConsoleColor)(rand() % ConsoleColor::White));
+}
 
 int main(int argc, char* args[])
 {
 	srand(static_cast<unsigned int>(time(NULL)));
+
+	OtherMethod(5);
 
 	std::string hello = "Hello Week 2!";
 	for (auto& ch : hello)

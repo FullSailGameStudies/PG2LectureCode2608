@@ -17,6 +17,23 @@ const int SCREEN_WIDTH = 480;
 const int SCREEN_HEIGHT = 480;
 void Pyramid(SDL_Renderer* renderer, int size, int x, int y)
 {
+	//exit condition: when the rectangle hits the boundary of the window
+	if (x < 0 or y < 0 or (x + size) > SCREEN_WIDTH or (y + size) > SCREEN_HEIGHT)
+		return;
+
+	//the going-out loop
+	SDL_Rect rect{ x,y,size,size };
+	SDL_SetRenderDrawColor(renderer, rand() % 255, rand() % 255, rand() % 255, 255);
+	SDL_RenderDrawRect(renderer, &rect);
+	SDL_RenderPresent(renderer);
+
+	std::this_thread::sleep_for(std::chrono::milliseconds(10));
+	Pyramid(renderer, size + 2, x - 1, y - 1);//the recursive case
+
+	//the coming back loop (unwinding the stack)
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+	SDL_RenderDrawRect(renderer, &rect);
+	SDL_RenderPresent(renderer);
 }
 void Day4::RecursionExample()
 {
@@ -66,8 +83,19 @@ void Day4::RecursionExample()
 //
 // Part A-1.1
 //
+void Bats(int i=0)
+{
+	if (i < 100) //exit condition
+	{
+		std::cout << (char)78 << (char)65 << ' ';
+		//i++ :: post-increment. uses the value of i THEN it increments i
+		//++i :: pre-increment. increments i then uses the value of i.
+		Bats(++i);
+	}
+}
 void Day4::PartA_1_1()
 {
+	Bats();
 	char c[] = { '\n', 66, 65, 84, 77, 65, 78, 33, 33 };
 	for (auto ch : c) std::cout << ch;
 
@@ -177,6 +205,7 @@ void Day4::PartA_2()
 						//
 						// Lecture: after adding BubbleSort to the Sorter class, call BubbleSort here to sort the redLightsCopy vector
 						//
+						sorter.bubbleSort(redLightsCopy);
 
 						Map screenMap(engine.Renderer(), 10);
 						engine.ClearScreen(50, 50, 50, 255);
