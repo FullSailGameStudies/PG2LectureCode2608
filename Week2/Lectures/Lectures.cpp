@@ -83,10 +83,10 @@ int main(int argc, char* args[])
 	//it returns an iterator
 	//if the key is found, an iterator to the key-value pair in the map
 	//if the kye is NOT found, the 
-	auto foundSection = menuItems.find(MenuSection::Entrees);
+	auto foundSection = menuItems.find(MenuSection::Appetizers);
 	if (foundSection == menuItems.end()) //means not found
 	{
-		std::cout << "There are no entrees on the menu.\n";
+		std::cout << "There are no Appetizers on the menu.\n";
 	}
 	else
 	{
@@ -96,6 +96,12 @@ int main(int argc, char* args[])
 		auto entreeVec = foundSection->second;
 		int numberOfEntrees = entreeVec.size();
 		std::cout << "There are " << foundSection->second.size() << "entrees on the menu.\n";
+
+		//IF you have the iterator, use the iterator to erase
+		//it's slightly faster
+		menuItems.erase(foundSection);//using the iterator
+		//OR...
+		menuItems.erase(MenuSection::Appetizers);//using the key
 	}
 
 	//looping over the map
@@ -167,7 +173,7 @@ int main(int argc, char* args[])
 		}
 	}
 
-	OtherMethod(5);
+	//OtherMethod(5);
 
 	std::string hello = "Hello Week 2!";
 	for (auto& ch : hello)

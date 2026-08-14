@@ -166,6 +166,26 @@ void Day5::PartB_2(int section)
 			//
 			// TODO: (Lecture) Part B-2.2 loop over the std::map
 			//
+			for (auto& [channel,lights] : groupedColors)
+			{
+				switch (channel)
+				{
+				case ColorChannel::RED:
+					std::cout << "RED: ";
+					break;
+				case ColorChannel::GREEN:
+					std::cout << "GREEN: ";
+					break;
+				case ColorChannel::BLUE:
+					std::cout << "BLUE: ";
+					break;
+				default:
+					break;
+				}
+				std::cout << lights.size() << "\n";
+
+				grouper.DrawLights(screenMap, lights, columnRange, column, row);
+			}
 
 
 			//Update screen
@@ -183,6 +203,15 @@ void Day5::PartB_2(int section)
 			//
 			// TODO: (Lecture)  Part B-3 call std::map's find method
 			//
+			foundBlues = groupedColors.find(ColorChannel::BLUE);
+			if (foundBlues == groupedColors.end()) //not found
+			{
+				std::cout << "no blues. so sad.\n";
+			}
+			else
+			{
+				std::cout << "The blue channel has " << foundBlues->second.size() << "\n";
+			}
 
 			for (auto& [channel, channelLights] : groupedColors)
 			{
@@ -204,6 +233,33 @@ void Day5::PartB_2(int section)
 			//
 			// TODO: (Lecture)  Part C-1 erasing from a std::map
 			//
+			foundBlues = groupedColors.find(ColorChannel::BLUE);
+			if (foundBlues == groupedColors.end()) //not found
+			{
+				std::cout << "no blues. so sad.\n";
+			}
+			else
+			{
+				int blue = 256;// rand() % 256;//0->255
+				std::cout << "Erasing all lights with a blue channel less than " << blue << "\n";
+				auto& blueLights = foundBlues->second;
+				int blueCount = 0;
+				for (int i = blueLights.size() - 1; i >= 0; i--)//reverse for loop
+				{
+					if (blueLights[i].blue < blue)
+					{
+						blueLights.erase(blueLights.begin() + i);
+						++blueCount;
+					}
+				}
+				std::cout << "Blue lights erased: " << blueCount << "\n";
+
+				if (blueLights.empty())
+				{
+					groupedColors.erase(foundBlues);
+					std::cout << "Blues erased from the map\n";
+				}
+			}
 
 
 			for (auto& [channel, channelLights] : groupedColors)
