@@ -4,10 +4,17 @@
 #include "Day8.h"
 #include "Day9.h"
 #include "Input.h"
+#include <Player.h>
 
 
 int main(int argc, char* args[])
 {
+	Player p1("The Bat", 100);
+	//p1.SetGamerTag("The Bat");
+	//p1.Health(100);
+	std::cout << p1.GetGamerTag() << ": " << p1.Health() << "\n";
+
+
     std::string hello = "Hello Week 3!";
     for (auto& ch : hello)
     {

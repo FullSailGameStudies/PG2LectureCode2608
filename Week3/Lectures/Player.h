@@ -11,6 +11,30 @@ class Player
 	//		of this class can see it
 public:
 
+	//constructors (ctor)
+	// initialize the object when it is created
+	// to create an object of a class, you MUST call a ctor
+	// IF you do not create your own ctor, the compiler will give you a default ctor
+	//		a default ctor - no parameters
+	// IF you do create a ctor, the compiler's ctor is not longer available
+	// RULES:
+	//	must have the same name as the class
+	//	cannot have any return type (not even void)
+	//	can have as many as needed and can have any access modifier
+
+	//a default ctor
+	Player(const std::string& gamerTag, int health) :
+		//the preferred way: use the 'member intialization list'
+		// this is where the fields are FIRST created
+		// better to initialize it once
+		gamerTag_(gamerTag),
+		health_(health)
+	{
+		//ok but NOT the preferred way
+		//gamerTag_ = gamerTag;
+		//health = health_;
+	}
+
 	//getters/setters
 	// the Gate Keepers of our data (fields)
 	//they control the acces to your fields
@@ -62,5 +86,6 @@ private:
 	// gamer_tag
 	std::string gamerTag_;
 	int health_;
+
 };
 
