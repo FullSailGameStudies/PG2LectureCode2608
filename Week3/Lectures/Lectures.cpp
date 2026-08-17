@@ -5,10 +5,16 @@
 #include "Day9.h"
 #include "Input.h"
 #include <Player.h>
+#include "Color.h"
 
 
 int main(int argc, char* args[])
 {
+	Color clr;
+	clr.r = 255;
+	clr.g = clr.b = 0;
+	clr.a = 255;
+
 	Player p1("The Bat", 100);
 	//p1.SetGamerTag("The Bat");
 	//p1.Health(100);
