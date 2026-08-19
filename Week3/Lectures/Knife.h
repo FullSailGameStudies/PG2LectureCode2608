@@ -10,6 +10,8 @@ public:
 		mSerrated(serrated)
 	{}
 
+	void showMe() override;
+
 	float Sharpness() const { return mSharpness; }
 	bool Serrated() const { return mSerrated; }
 

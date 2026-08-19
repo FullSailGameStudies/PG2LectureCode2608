@@ -12,6 +12,8 @@ public:
 		: Card(face,suit)
 	{}
 
+	int Value() const override;
+
 private:
 
 };

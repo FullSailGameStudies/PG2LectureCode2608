@@ -8,7 +8,11 @@ private:
 public:
 	Weapon(int range, int damage);
 
-	void showMe();
+	//Runtime polymorph:
+	//Overriding - step 1: mark the base method as 'virtual'
+	//  do NOT mark all base methods as virtual.
+	//  ONLY mark the ones that need to be virtual
+	virtual void showMe();
 	int calcDamage();
 
 	int range() const

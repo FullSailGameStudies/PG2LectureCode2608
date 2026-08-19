@@ -7,11 +7,31 @@
 #include <Player.h>
 #include "Color.h"
 #include <Pistol.h>
+#include <Knife.h>
 
+//overloading:
+//  2 functions have the same name
+//  IF:
+//		- the number of parameters are different
+//		- the types of the parameters are different
+int Add(int n1, int n2) { return n1 + n2; }
+float Add(float n1, float n2) { return n1 + n2; }
+int Add(int n1, int n2, int n3) { return n1 + n2 + n3; }
 
 int main(int argc, char* args[])
 {
 	Pistol pewpew(10, 5, 200, 50);
+	Pistol p2(10, 2, 200, 50);
+	Pistol p3 = pewpew + p2;
+
+	Knife stabby(1.0f, true, 3, 15);
+
+	pewpew.showMe();
+	stabby.showMe();
+
+
+	Add(5.0f, 2.0f);
+	Add(5, 2, 10);
 
 	Color clr;
 	clr.r = 255;
