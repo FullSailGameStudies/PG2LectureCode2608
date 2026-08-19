@@ -6,10 +6,13 @@
 #include "Input.h"
 #include <Player.h>
 #include "Color.h"
+#include <Pistol.h>
 
 
 int main(int argc, char* args[])
 {
+	Pistol pewpew(10, 5, 200, 50);
+
 	Color clr;
 	clr.r = 255;
 	clr.g = clr.b = 0;
