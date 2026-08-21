@@ -11,6 +11,7 @@ public:
 	{}
 
 	void showMe() override;
+	int calcDamage() override;
 
 	float Sharpness() const { return mSharpness; }
 	bool Serrated() const { return mSerrated; }

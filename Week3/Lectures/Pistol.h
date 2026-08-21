@@ -30,6 +30,7 @@ public:
 
 	// optional: add the 'override' keyword
 	void showMe() override;
+	int calcDamage() override;
 
 	int MagSize() const { return mMagSize; }
 	int Ammo() const { return mAmmo; }

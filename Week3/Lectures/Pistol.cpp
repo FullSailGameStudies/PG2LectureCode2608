@@ -17,3 +17,8 @@ void Pistol::showMe()
 	std::cout << "\t Ammo: " << mAmmo << " Mag Size: " << mMagSize << "\n";
 
 }
+
+int Pistol::calcDamage()
+{
+	return Weapon::calcDamage();
+}
